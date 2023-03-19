@@ -92,8 +92,8 @@ const SearchOrder: React.FC<SearchOrderProps> = () => {
             return filteredData;
         }
 
-        const itemNumbers = text.split(",").map((n) => parseInt(n.trim(), 10));
-        return filteredData.filter((d) => itemNumbers.includes(d.itemNumber));
+        const itemNumbers = text.split(",").map((n) => n.trim());
+        return filteredData.filter((d) => itemNumbers.map((n) => n.toLocaleUpperCase()).includes(d.itemNumber.toLocaleUpperCase()));
         };
         const result = await search(searchText, filters);
         setSearchResult(result);
