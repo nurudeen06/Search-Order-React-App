@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './Search.css';
 
 interface SearchOrderProps {}
 
@@ -117,24 +118,28 @@ const SearchOrder: React.FC<SearchOrderProps> = () => {
 
   return (
     <div>
-      <div>
-        <input type="text" value={searchText} onChange={handleSearchInputChange} />
-        <button onClick={handleSearchClick}>Search</button>
-        <button onClick={handleResetClick}>Reset All</button>
-        <button onClick={handleFilterButtonClick}>Filter</button>
+      <div className="search-container">
+        <div className="heading-container">
+        <h1 className="heading">Item search</h1>
+
+        </div>
+        <input type="text" value={searchText} onChange={handleSearchInputChange} className='input-text' placeholder="Search by item #"/>
+        <button onClick={handleSearchClick} className='btn btn-search'>Search</button>
+        <button onClick={handleResetClick} className='btn btn-reset'>Reset All</button>
+        <button onClick={handleFilterButtonClick} className='btn btn-filter'>Filter</button>
       </div>
       {filterPanelOpen && (
-        <div>
-          <div>
-            <label>Item Number:</label>
-            <input type="text" value={filters.itemNumber} onChange={handleItemNumberInputChange} />
+        <div  className="filter-container">
+          <div >
+            <label className="label-text">Item Number:</label>
+            <input type="text" value={filters.itemNumber} onChange={handleItemNumberInputChange} className='input-text' />
           </div>
           <div>
-            <label>Order Number:</label>
-            <input type="text" value={filters.orderNumber} onChange={handleOrderNumberInputChange} />
+            <label className="label-text">Order Number:</label>
+            <input type="text" value={filters.orderNumber} onChange={handleOrderNumberInputChange} className='input-text' />
           </div>
-          <div>
-            <label>Type:</label>
+          <div className="filter-checkbox-container">
+            <label className="filter-heading">Type:</label>
             <div>
               <label>
                 <input type="checkbox" value="EDF" checked={filters.type.includes("EDF")} onChange={handleTypeCheckboxChange} />
@@ -156,7 +161,7 @@ const SearchOrder: React.FC<SearchOrderProps> = () => {
       </div>
     </div>
   )}
-  <table>
+  <table className="table">
     <thead>
       <tr>
         <th>Order Number</th>
