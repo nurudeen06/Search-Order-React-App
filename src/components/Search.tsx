@@ -63,7 +63,7 @@ const SearchOrder: React.FC<SearchOrderProps> = () => {
 
         if (filters.itemNumber) {
             const itemNumbers = filters.itemNumber.split(",").map((n) => n.trim());
-            filteredData = filteredData.filter((d) => itemNumbers.includes(d.itemNumber));
+            filteredData = filteredData.filter((d) => itemNumbers.map((n) => n.toLocaleUpperCase()).includes(d.itemNumber.toLocaleUpperCase()));
         }
 
         if (filters.orderNumber) {
